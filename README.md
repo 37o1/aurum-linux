@@ -14,12 +14,57 @@ Here is a screenshot of what the glass demo should look like:
 
 ## Requirements
 
-This section can't be completed yet. You can help me complete it by testing the performance on your machine and sending me the results along with your specs to [my Telegram](https://t.me/artificialsentience).
+> **This section may be incomplete, inaccurate or just bad. You can help me improve it by testing the performance on your machine and/or checking any requirements I missed and sending the results along with your system information to [my Telegram](https://t.me/artificialsentience).**
 
-Requirements that I'm sure about:
+### System Requirements
 
-* RAM: At least 158MiB usable memory
-* Storage: 1.75MiB
+* Linux kernel 3.2+
+* glibc 2.34^
+* OpenGL 4.6 core profile support
+* GPU architectures:
+  * Intel Gen9+ (Skylake or newer)
+  * AMD GCN 2nd generation or newer
+  * NVIDIA Kepler or newer
+* Mesa or vendor driver exposing GL 4.6
+* At least 200MiB of usable memory<sup>*2</sup>
+* At least 2MiB of free disk space<sup>*2</sup>
+
+<sup>*1</sup> Guaranteed only for the lastest release.
+<sup>*2</sup> Guesstimated, but over the meaasured minimum and should cover roughly any build of the last released version.
+
+### Build Requirements
+
+To build this project from source, the following components must be present on the system:
+
+* D compiler:
+  * `dmd` (used during development)
+  * `ldc` is also supported and tested
+* **Dub** (D package manager and build orchestrator)
+* OpenGL development headers with support for GLSL 460. Typically provided by:
+  * `mesa` / `mesa-devel`
+  * `libglvnd` / `libglvnd-devel`
+* Raylib development libraries, including:
+  * `libraylib.so`
+  * `raylib` headers
+* GLSL compiler:
+  * `glslang` or `glslang-tools`
+* These are required for linking raylib and OpenGL:
+  * `pkg-config`
+  * Development C toolchain:
+    * `gcc` or `clang`
+    * make (if building raylib from source)
+* Runtime dependencies **(non-exhaustive)**:
+  * Binary links to the following shared objects at runtime:
+    * `linux-vdso.so.1` (implicit)
+    * `libm.so.6`
+    * `libgcc_s.so.1`
+    * `libc.so.6` (>= 2.34 required)
+    * `/lib64/ld-linux-x86-64.so.2`
+  * Raylib may also pull:
+    * `libdl.so.2`
+    * `libGL.so.1`
+    * `libpthread.so.0`
+    * `libX11.so.6`
 
 ## Sources
 
