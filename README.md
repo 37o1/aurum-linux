@@ -12,6 +12,15 @@ Here is a screenshot of what the glass demo should look like:
 
 ![alt text](screenshots/image.png)
 
+## Requirements
+
+This section can't be completed yet. You can help me complete it by testing the performance on your machine and sending me the results along with your specs to [my Telegram](https://t.me/artificialsentience).
+
+Requirements that I'm sure about:
+
+* RAM: At least 158MiB usable memory
+* Storage: 1.75MiB
+
 ## Sources
 
 Default wallpaper source: <https://www.pexels.com/photo/close-up-shot-of-irregular-crystal-prisms-12602048/>
