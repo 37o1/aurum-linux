@@ -1,0 +1,15 @@
+{
+	"authors": [
+		"37o1"
+	],
+	"copyright": "Copyright © 2025, 37o1",
+	"dependencies": {
+		"raylib-d": "~>5.5.3"
+	},
+	"description": "Aurum host for linux",
+	"libs": [
+		"raylib"
+	],
+	"license": "ISC",
+	"name": "aurum"
+}
