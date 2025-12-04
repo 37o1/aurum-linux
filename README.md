@@ -6,6 +6,12 @@ Currently the sandbox only showcases the GLSL glass effect that will be used in 
 
 Documentation about Aurum will be coming to Github soon at <https://github.com/37o1/aurum-documentation>.
 
+## Showcase
+
+Here is a screenshot of what the glass demo should look like:
+
+![alt text](screenshots/image.png)
+
 ## Sources
 
 Default wallpaper source: <https://www.pexels.com/photo/close-up-shot-of-irregular-crystal-prisms-12602048/>
