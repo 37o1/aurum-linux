@@ -37,7 +37,7 @@ void main() {
 	float dy = max(ny - (1.0 - cy), 0.0) / cy;
 	float inside = pow(dx, n) + pow(dy, n);
 	float px = (1.0 / length(resolution.xy));
-	float mask = smoothstep(0.0, 1.0, max(0.0, 1.0 - pow(inside, 8.0 + log(length(rect.zw) * r * px))));
+	float mask = smoothstep(0.0, 1.0, max(0.0, 1.0 - pow(inside, radius / 2.0)));
 
 	finalColor = mix(texture2D(backBuffer, uv), texture2D(backBuffer, uv) * albedo + emission, mask);
 }
