@@ -110,6 +110,7 @@ public static class Screen : Effect {
 		} else if (IsKeyDown(KeyboardKey.KEY_LEFT_SHIFT)) {
 			Glass.rect += delta;
 		}
+		Glass.blur = 32.0;
 		Glass.draw(Screen.back.texture, Screen.front);
 
 		BeginDrawing();

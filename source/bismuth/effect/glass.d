@@ -41,6 +41,7 @@ public static class Glass : Effect {
 
 	static Rectangle rect = Rectangle(256, 256, 64, 64);
 	static float radius = 64;
+	static float blur = 64;
 	static float power = 3;
 	static Vector4 albedo = Vector4(0.97, 0.98, 0.99, 1);
 	static Vector4 emission = Vector4(0, 0, 0, 0);
@@ -57,7 +58,7 @@ public static class Glass : Effect {
 		Blur.rect.y = rect.y - 512.0;
 		Blur.rect.w = rect.w + 1024.0;
 		Blur.rect.h = rect.h + 1024.0;
-		Blur.radius = min(radius, max(0.0, radius / log(radius)));
+		Blur.radius = blur;
 		Blur.rSamples = min(32.0, max(1.0, ceil(Blur.radius / PI)));
 		Blur.aSamples = 3;
 		Blur.draw(input, blurDropOff);
