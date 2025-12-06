@@ -66,6 +66,10 @@ To build this project from source, the following components must be present on t
     * `libpthread.so.0`
     * `libX11.so.6`
 
+### Build instructions
+
+With dub: `dub build`
+
 ## Sources
 
 Default wallpaper source: <https://www.pexels.com/photo/close-up-shot-of-irregular-crystal-prisms-12602048/>
