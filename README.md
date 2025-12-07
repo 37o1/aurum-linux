@@ -26,11 +26,10 @@ Here is a screenshot of what the glass demo should look like:
   * AMD GCN 2nd generation or newer
   * NVIDIA Kepler or newer
 * Mesa or vendor driver exposing GL 4.6
-* At least 200MiB of usable memory<sup>*2</sup>
-* At least 2MiB of free disk space<sup>*2</sup>
+* At least 200MiB of usable memory<sup>*1</sup>
+* At least 2MiB of free disk space<sup>*1</sup>
 
-<sup>*1</sup> Guaranteed only for the lastest release.
-<sup>*2</sup> Guesstimated, but over the meaasured minimum and should cover roughly any build of the last released version.
+<sup>*1</sup> Guesstimated, but over the meaasured minimum and should cover roughly any build of the last released version.
 
 ### Build Requirements
 
