@@ -28,5 +28,5 @@ void main() {
 	float px = (1.0 / length(resolution.xy));
 	float mask = smoothstep(0.0, 1.0, max(0.0, 1.0 - pow(inside, radius / 2.0)));
 
-	finalColor = mix(texture2D(backBuffer, uv), texture2D(backBuffer, uv) * albedo + emission, mask);
+	finalColor = texture2D(backBuffer, uv) * (1.0 - (1.0 - albedo) * mask) + emission * mask;
 }

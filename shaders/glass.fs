@@ -1,4 +1,5 @@
 #version 460
+
 precision highp float;
 precision highp sampler2D;
 
@@ -44,25 +45,26 @@ void main() {
 	// symmetric center-relative coordinate
 	vec2 rectCenter = (p - rc) / (rect.zw * 8.0);
 	rectCenter.y = -rectCenter.y;
-	rectCenter *= pinside;
 
 	vec4 refracted = vec4(0.0);
+
+	float sinside = pow(pinside, 8.0);
 
 	vec2 offset = rectCenter * pinside;
 
 	refracted.r =
 	  safeSample(backBuffer, uv - offset * 0.95).r
-	+ safeSample(backBuffer, uv + offset * 1.05).r * pinside * 0.2
+	+ safeSample(backBuffer, uv + offset * 1.05).r * sinside
 	;
 	
 	refracted.g =
 	  safeSample(backBuffer, uv - offset).g
-	+ safeSample(backBuffer, uv + offset).g * pinside * 0.2
+	+ safeSample(backBuffer, uv + offset).g * sinside
 	;
 	
 	refracted.b =
 	  safeSample(backBuffer, uv - offset * 1.05).b
-	+ safeSample(backBuffer, uv + offset * 0.95).b * pinside * 0.2
+	+ safeSample(backBuffer, uv + offset * 0.95).b * sinside
 	;
 	
 	refracted.a = 1.0;

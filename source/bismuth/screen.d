@@ -13,6 +13,8 @@ import std.string;
 import bismuth.effect.base;
 import bismuth.effect.blur;
 import bismuth.effect.glass;
+import bismuth.effect.squircle;
+import bismuth.effect.fade : Fade;
 import bismuth.workspace;
 import bismuth.window;
 import bismuth.tab;
@@ -65,8 +67,11 @@ public static class Screen : Effect {
 
 		Workspace.load();
 		Window.load();
+		Squircle.load();
+		Fade.load();
 		Blur.load();
 		Glass.load();
+		oldrect = Glass.rect;
 
 		DisableCursor();
 
@@ -85,8 +90,30 @@ public static class Screen : Effect {
 		CloseWindow();
 	}
 
+	private static void feed () {
+		BeginTextureMode(Screen.back);
+			DrawTexturePro(
+				Screen.front.texture,
+				Rectangle(0, 0, Screen.size.x, -Screen.size.y),
+				Rectangle(0, 0, Screen.size.x, Screen.size.y),
+				Vector2(0, 0),
+				0,
+				Colors.WHITE,
+			);
+		EndTextureMode();
+	}
+
+	private static Rectangle oldrect = Rectangle();
+
 	public static void draw () {
 		BeginTextureMode(Screen.back);
+			DrawTexturePro(Screen.wallpaper,
+				Rectangle(0, 0, Screen.wallpaper.width, Screen.wallpaper.height),
+				Rectangle(0, 0, Screen.size.x, Screen.size.y),
+				Vector2(0, 0),
+				0,
+				Colors.WHITE,
+			);
 			ClearBackground(Colors.BLACK);
 			DrawTexturePro(
 				wallpaper,
@@ -99,6 +126,7 @@ public static class Screen : Effect {
 		EndTextureMode();
 
 		Vector2 delta = GetMouseDelta();
+		Glass.rect = oldrect;
 		if (IsKeyDown(KeyboardKey.KEY_LEFT_ALT)) {
 			if (IsKeyDown(KeyboardKey.KEY_LEFT_SHIFT))
 				Glass.power += delta.x / 16.0;
@@ -112,6 +140,21 @@ public static class Screen : Effect {
 		}
 		Glass.blur = 32.0;
 		Glass.draw(Screen.back.texture, Screen.front);
+		feed();
+		oldrect = Glass.rect;
+		Glass.rect.x += 256;
+		Glass.rect.y += 256;
+		Glass.draw(Screen.back.texture, Screen.front);
+		feed();
+		
+		//Fade.radius = Glass.radius;
+		//Fade.power = Glass.power;
+		//Fade.rect = Rectangle(Glass.rect.x + Glass.radius, Glass.rect.y + Glass.radius, Glass.rect.w - Glass.radius * 2.0, Glass.rect.h - Glass.radius * 2.0);
+		//Fade.rect = Rectangle(0, 0, 200, 200);
+		//Fade.albedo = Vector4(0.0, 0.0, 0.0, 0.0);
+		//Fade.emission = Vector4(0.1, 0.1, 0.1, 1.0);
+		//Fade.draw(Screen.back.texture, Screen.front);
+		//feed();
 
 		BeginDrawing();
 			ClearBackground(Colors.BLANK);
@@ -122,7 +165,7 @@ public static class Screen : Effect {
 				0,
 				Colors.WHITE,
 			);
-			DrawTexturePro(Screen.front.texture,
+			DrawTexturePro(Screen.back.texture,
 				Rectangle(0, 0, Screen.size.x, -Screen.size.y),
 				Rectangle(0, 0, Screen.size.x, Screen.size.y),
 				Vector2(0, 0),
